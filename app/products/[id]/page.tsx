@@ -10,9 +10,8 @@ export default async function ProductPage({ params }: Params) {
   const { id } = await params;
 
   return (
-    <>
-      <h1>ProductPage {id}</h1>
+    <div className='container mx-auto w-[60%] '>
       <ProductDetail id={id} />
-    </>
+    </div>
   )
 }

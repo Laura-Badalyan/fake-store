@@ -5,7 +5,7 @@ import { clearCurrent, deleteProduct, fetchProductById } from '@/store/productSl
 import Image from 'next/image';
 import React, { useEffect } from 'react'
 
-import noImg from "@/public/noImage.svg"
+import noImg from "@/public/noImage.png"
 import { useRouter } from 'next/navigation';
 
 export function ProductDetail({ id }: { id: string }) {
@@ -34,19 +34,35 @@ export function ProductDetail({ id }: { id: string }) {
 
 
     return (
-        <div>
-            <Image
-                src={""}
-                alt={""}
-                width={300}
-                height={300}
-                priority
-                placeholder={"blur"}
-                blurDataURL={noImg.src}
-                quality={100}
-            />
-            <button onClick={() => router.push(`/products/${id}/edit`)}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+        <div className='flex flex-col items-center'>
+            <h1 className=' text-3xl text-center p-4 font-bold text-fuchsia-950'>{current.title}</h1>
+            <div className='h-[400px]'>
+                <Image
+                    src={current.image || noImg}
+                    alt={current.title || ''}
+                    width={300}
+                    height={300}
+                    priority
+                    placeholder={"blur"}
+                    blurDataURL={noImg.src}
+                    quality={100}
+                />
+                <div className=' my-4 flex justify-between items-center'>
+                    <button
+                        onClick={() => router.push(`/products/${id}/edit`)}
+                        className='px-12 py-2 border-2 border-blue-900 rounded-2xl font-bold text-blue-900 cursor-pointer hover:bg-blue-900 hover:text-white'
+                    >
+                        Edit
+                    </button>
+                    <button
+                        onClick={handleDelete}
+                        className='px-12 py-2 border-2 border-red-700 rounded-2xl font-bold text-red-700 cursor-pointer hover:bg-red-700 hover:text-white'
+                    >
+                        Delete
+                    </button>
+                </div>
+            </div>
         </div>
+
     )
 }

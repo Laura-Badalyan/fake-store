@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 
-import noImg from "@/public/noImage.svg"
+import noImg from "@/public/noImage.png"
 
 export function Products() {
 
